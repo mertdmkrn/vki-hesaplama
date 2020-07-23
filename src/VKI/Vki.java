@@ -17,21 +17,21 @@ public class Vki extends JFrame implements ActionListener {
 	private JLabel lblyas;
 	private JLabel lblcinsiyet;
 	private JLabel lbluyari;
-    private JRadioButton cherkek;
-    private JRadioButton chkadin;
-    private ButtonGroup bg;
-    private JButton btn1;
-    private JButton btn2;
-    private double boy;
-    private double kilo;
-    private double yas;
-    private double sonuc=0;
-    private JLabel lbldurum;
-    private JLabel lblsonuc;
-    private JLabel lblkitle;
-    private JLabel lblkitle2;
-    DecimalFormat df = new DecimalFormat("####0.00");
-    
+	private JRadioButton cherkek;
+	private JRadioButton chkadin;
+        private ButtonGroup bg;
+        private JButton btn1;
+        private JButton btn2;
+        private double boy;
+        private double kilo;
+        private double yas;
+        private double sonuc=0;
+        private JLabel lbldurum;
+        private JLabel lblsonuc;
+        private JLabel lblkitle;
+        private JLabel lblkitle2;
+        DecimalFormat df = new DecimalFormat("####0.00");
+	
 	public Vki(){
 		
 		txtboy=new JTextField(3);
@@ -55,14 +55,14 @@ public class Vki extends JFrame implements ActionListener {
 		bg.add(cherkek);
 		bg.add(chkadin);
 		btn1.addActionListener(this);
-	    btn2.addActionListener(this);
+	        btn2.addActionListener(this);
 		cherkek.addActionListener(this);
-	    chkadin.addActionListener(this);
+	        chkadin.addActionListener(this);
 		pack();
 		setSize(400,400);
-	    setLocationRelativeTo(null);
-	    setResizable(false);
-	    setTitle("VKI Hesaplama");
+	        setLocationRelativeTo(null);
+	        setResizable(false);
+	        setTitle("VKI Hesaplama");
 		pencereGoster();
 	}
 	
@@ -84,8 +84,8 @@ public class Vki extends JFrame implements ActionListener {
 	        public void keyTyped(KeyEvent e) {
 	            if (txtboy.getText().length() >= 3 )
 	                e.consume();
-	        }
-	    });
+	            }
+	       });
 		txtkilo.setBounds(185,90,150,25);
 		txtkilo.setHorizontalAlignment(JLabel.CENTER);
 		txtkilo.setBorder(null);
@@ -94,8 +94,8 @@ public class Vki extends JFrame implements ActionListener {
 	        public void keyTyped(KeyEvent e) {
 	            if (txtkilo.getText().length() >= 3 )
 	                e.consume();
-	        }
-	    });
+	            }
+	        });
 		txtyas.setBounds(185,130,150,25);
 		txtyas.setHorizontalAlignment(JLabel.CENTER);
 		txtyas.setBorder(null);
@@ -104,8 +104,8 @@ public class Vki extends JFrame implements ActionListener {
 	        public void keyTyped(KeyEvent e) {
 	            if (txtyas.getText().length() >= 3 )
 	                e.consume();
-	        }
-	    });
+	            }
+	        });
 		lblboy.setBounds(50,50,120,25);
 		lblboy.setForeground(Color.WHITE);
 		lblkilo.setBounds(50,90,120,25);
@@ -150,7 +150,7 @@ public class Vki extends JFrame implements ActionListener {
 		btn2.setBackground(Color.white);
 		btn2.setForeground(Color.black);
 		btn2.setFont(new Font("Courier", Font.CENTER_BASELINE, 10));
-	    con.add(txtboy);
+	        con.add(txtboy);
 		con.add(txtkilo);
 		con.add(txtyas);
 		con.add(lblbaslik);
@@ -165,97 +165,97 @@ public class Vki extends JFrame implements ActionListener {
 		con.add(btn2);
 		con.add(lblsonuc);
 		con.add(lbldurum);
-	    con.add(lblkitle);
-	    con.add(lblkitle2);
+	        con.add(lblkitle);
+	        con.add(lblkitle2);
 	    
 	}
 	
 	public void actionPerformed(ActionEvent e){
 
-        if (e.getSource() == btn1) {
+       		if (e.getSource() == btn1) {
         	
-        	bg.clearSelection();
-        	txtboy.setText("");
-        	txtkilo.setText("");
-        	txtyas.setText("");
-        	lbldurum.setText("");
-        	lbluyari.setText("");
-        	lbldurum.setOpaque(false);
-        	lblsonuc.setText("");
-        	lblsonuc.setOpaque(false);
-        	lblkitle.setText("");
-        	lblkitle.setOpaque(false);
-        	lblkitle2.setText("");
-        	lblkitle2.setOpaque(false);
-        
-        } 
-        
-        if (e.getSource() == btn2) {
+			bg.clearSelection();
+			txtboy.setText("");
+			txtkilo.setText("");
+			txtyas.setText("");
+			lbldurum.setText("");
+			lbluyari.setText("");
+			lbldurum.setOpaque(false);
+			lblsonuc.setText("");
+			lblsonuc.setOpaque(false);
+			lblkitle.setText("");
+			lblkitle.setOpaque(false);
+			lblkitle2.setText("");
+			lblkitle2.setOpaque(false);
 
-        	if(txtyas.getText().equals("") || txtboy.getText().equals("") || txtkilo.getText().equals("")) { 
-        		lbluyari.setText("Boş alan bırakmayınız!!!"); 
-        	}
+        	} 
+        
+        	if (e.getSource() == btn2) {
+
+			if(txtyas.getText().equals("") || txtboy.getText().equals("") || txtkilo.getText().equals("")) { 
+				lbluyari.setText("Boş alan bırakmayınız!!!"); 
+			}
      
-        	else{
-                try {
-                	lbluyari.setText("");
-   	            	boy=Integer.parseInt(txtboy.getText());
-   	  	            kilo=Integer.parseInt(txtkilo.getText());
-   	  	            yas=Integer.parseInt(txtyas.getText());
-		   	  	   	sonuc=kilo/((boy/100)*(boy/100));
-		        	
-		        	if(sonuc>=0 && sonuc<=18.4){
-		        		sonucPencere();
-		        		lblkitle2.setText("Zayıf");
-		        		lblkitle2.setHorizontalAlignment(JLabel.CENTER);
-		                lblkitle2.setBackground(Color.LIGHT_GRAY);
-		           		lblkitle2.setOpaque(true);
-		        	}
-		        	if(sonuc>18.4 && sonuc<=24.9){
-		        		sonucPencere();
-		           		lblkitle2.setText("Normal Kilolu");
-		           		lblkitle2.setHorizontalAlignment(JLabel.CENTER);
-		                lblkitle2.setBackground(Color.LIGHT_GRAY);
-		           		lblkitle2.setOpaque(true);
-		        	}
-		        	if(sonuc>24.9 && sonuc<=29.9){
-		        		sonucPencere();
-		           		lblkitle2.setText("Fazla Kilolu");
-		           		lblkitle2.setHorizontalAlignment(JLabel.CENTER);
-		                lblkitle2.setBackground(Color.LIGHT_GRAY);
-		           		lblkitle2.setOpaque(true);
-		        	}
-		        	if(sonuc>29.9 && sonuc<=34.9){
-		        		sonucPencere();
-		           		lblkitle2.setText("I.Derece Obez");
-		           		lblkitle2.setHorizontalAlignment(JLabel.CENTER);
-		                lblkitle2.setBackground(Color.LIGHT_GRAY);
-		           		lblkitle2.setOpaque(true);
-		        	}
-		        	if(sonuc>34.9 && sonuc<=44.9){
-		        		sonucPencere();
-		           	    lblkitle2.setText("II.Derece Obez");
-		           	    lblkitle2.setHorizontalAlignment(JLabel.CENTER);
-		                lblkitle2.setBackground(Color.LIGHT_GRAY);
-		        		lblkitle2.setOpaque(true);
-		        	}
-		        	if(sonuc>=45){
-		        		sonucPencere();
-		           		lblkitle2.setText("III.Derece Obez");
-		           		lblkitle2.setHorizontalAlignment(JLabel.CENTER);
-		                lblkitle2.setBackground(Color.LIGHT_GRAY);
-		           		lblkitle2.setOpaque(true);		
-		        	}
-   			    }
-                catch (NumberFormatException nfe) {
-   			    	txtboy.setText("");
-   			    	txtkilo.setText("");
-   			    	txtyas.setText("");
-   			    	lbluyari.setText("Lütfen sayı giriniz!!!");
-   			    }
-     
-        	}
-        }
+        		else{
+				try {
+					lbluyari.setText("");
+					boy=Integer.parseInt(txtboy.getText());
+					    kilo=Integer.parseInt(txtkilo.getText());
+					    yas=Integer.parseInt(txtyas.getText());
+							sonuc=kilo/((boy/100)*(boy/100));
+
+						if(sonuc>=0 && sonuc<=18.4){
+							sonucPencere();
+							lblkitle2.setText("Zayıf");
+							lblkitle2.setHorizontalAlignment(JLabel.CENTER);
+						lblkitle2.setBackground(Color.LIGHT_GRAY);
+							lblkitle2.setOpaque(true);
+						}
+						if(sonuc>18.4 && sonuc<=24.9){
+							sonucPencere();
+							lblkitle2.setText("Normal Kilolu");
+							lblkitle2.setHorizontalAlignment(JLabel.CENTER);
+						lblkitle2.setBackground(Color.LIGHT_GRAY);
+							lblkitle2.setOpaque(true);
+						}
+						if(sonuc>24.9 && sonuc<=29.9){
+							sonucPencere();
+							lblkitle2.setText("Fazla Kilolu");
+							lblkitle2.setHorizontalAlignment(JLabel.CENTER);
+						lblkitle2.setBackground(Color.LIGHT_GRAY);
+							lblkitle2.setOpaque(true);
+						}
+						if(sonuc>29.9 && sonuc<=34.9){
+							sonucPencere();
+							lblkitle2.setText("I.Derece Obez");
+							lblkitle2.setHorizontalAlignment(JLabel.CENTER);
+						lblkitle2.setBackground(Color.LIGHT_GRAY);
+							lblkitle2.setOpaque(true);
+						}
+						if(sonuc>34.9 && sonuc<=44.9){
+							sonucPencere();
+						    lblkitle2.setText("II.Derece Obez");
+						    lblkitle2.setHorizontalAlignment(JLabel.CENTER);
+						lblkitle2.setBackground(Color.LIGHT_GRAY);
+							lblkitle2.setOpaque(true);
+						}
+						if(sonuc>=45){
+							sonucPencere();
+							lblkitle2.setText("III.Derece Obez");
+							lblkitle2.setHorizontalAlignment(JLabel.CENTER);
+						lblkitle2.setBackground(Color.LIGHT_GRAY);
+							lblkitle2.setOpaque(true);		
+						}
+					    }
+				catch (NumberFormatException nfe) {
+						txtboy.setText("");
+						txtkilo.setText("");
+						txtyas.setText("");
+						lbluyari.setText("Lütfen sayı giriniz!!!");
+					    }
+
+				}
+    		    }
 	}
 	
 	public void sonucPencere() {
@@ -264,13 +264,13 @@ public class Vki extends JFrame implements ActionListener {
 		lbldurum.setHorizontalAlignment(JLabel.CENTER);
 		lbldurum.setBackground(Color.DARK_GRAY);
 		lbldurum.setOpaque(true);
-        lblsonuc.setText(df.format(sonuc));
-        lblsonuc.setHorizontalAlignment(JLabel.CENTER);
-        lblsonuc.setBackground(Color.lightGray);
+        	lblsonuc.setText(df.format(sonuc));
+        	lblsonuc.setHorizontalAlignment(JLabel.CENTER);
+        	lblsonuc.setBackground(Color.lightGray);
 		lblsonuc.setOpaque(true);
 		lblkitle.setText("Vücut Kitle Endeks Aralığı");
 		lblkitle.setHorizontalAlignment(JLabel.CENTER);
-        lblkitle.setBackground(Color.DARK_GRAY);
+        	lblkitle.setBackground(Color.DARK_GRAY);
    		lblkitle.setOpaque(true);
    		
 	}
